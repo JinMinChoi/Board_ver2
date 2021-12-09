@@ -1,6 +1,7 @@
 package me.jinmin.boardver2.user.model;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import me.jinmin.boardver2.board.model.Board;
@@ -19,6 +20,7 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
+    @Column(name = "email")
     private String email;
     private String password;
     private String name;
@@ -29,4 +31,11 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Board> boards = new ArrayList<>();
 
+    @Builder
+    public User(String email, String password, String name, UserRole userRole) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.userRole = userRole;
+    }
 }

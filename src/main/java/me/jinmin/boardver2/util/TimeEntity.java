@@ -1,4 +1,4 @@
-package me.jinmin.boardver2.board.model;
+package me.jinmin.boardver2.util;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
