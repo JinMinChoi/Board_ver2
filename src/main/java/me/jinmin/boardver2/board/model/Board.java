@@ -3,6 +3,7 @@ package me.jinmin.boardver2.board.model;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.jinmin.boardver2.comment.model.Comment;
 import me.jinmin.boardver2.user.model.User;
 import me.jinmin.boardver2.util.TimeEntity;
 
@@ -30,5 +31,5 @@ public class Board extends TimeEntity {
     private User user;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Board> boards;
+    private List<Comment> boards;
 }

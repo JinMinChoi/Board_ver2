@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.6.1'
+    id 'org.springframework.boot' version '2.5.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
@@ -24,8 +24,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     //swagger
-    implementation 'io.springfox:springfox-swagger2:2.9.2'
-    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+    compileOnly group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    compileOnly group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
 
     runtimeOnly 'com.h2database:h2'
     compileOnly 'org.projectlombok:lombok'
