@@ -12,8 +12,8 @@
 | POST   | /users/login    | 로그인         |
 | GET    | /users/{userId} | 단일 회원 조회 |
 | GET    | /users          | 전체 회원 조회 |
-| PUT    | /users/{userId} | 회원 정보 수정 |
-| DELETE | /users/{userId} | 회원 삭제      |
+| PUT    | /users/update/{userId} | 회원 정보 수정 |
+| DELETE | /users/delete/{userId} | 회원 삭제      |
 
 <br/>
 
