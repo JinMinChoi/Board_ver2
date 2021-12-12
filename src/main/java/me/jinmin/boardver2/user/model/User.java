@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import me.jinmin.boardver2.board.model.Board;
+import me.jinmin.boardver2.comment.model.Comment;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -31,11 +32,20 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Board> boards = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments = new ArrayList<>();
+
     @Builder
     public User(String email, String password, String name, UserRole userRole) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.userRole = userRole;
+    }
+
+    public User updateUserInfo(String name, String password) {
+        this.name = name;
+        this.password = password;
+        return this;
     }
 }
