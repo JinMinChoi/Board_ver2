@@ -18,8 +18,8 @@ public class UserFindApi {
 
     private final UserFindService userFindService;
 
-    @GetMapping("/{id}")
-    public ApiResult<User> findById(@PathVariable("id") Long userId) {
+    @GetMapping("/{userId}")
+    public ApiResult<User> findById(@PathVariable Long userId) {
         try {
             return ApiResult.succeed(userFindService.findById(userId));
         } catch (Exception e) {
