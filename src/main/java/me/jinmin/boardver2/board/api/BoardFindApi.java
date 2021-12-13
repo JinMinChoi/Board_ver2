@@ -41,7 +41,7 @@ public class BoardFindApi {
         }
     }
 
-    @GetMapping("/{category}")
+    @GetMapping("/category/{category}")
     public ApiResult<List<Board>> findByCategory(@PathVariable BoardCategory category) {
         try {
             return ApiResult.succeed(boardFindService.findByCategory(category));
