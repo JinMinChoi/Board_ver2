@@ -30,6 +30,9 @@ public class Board extends TimeEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Enumerated(EnumType.STRING)
+    private BoardCategory category;
+
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> boards;
+    private List<Comment> comments;
 }
