@@ -29,10 +29,10 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private UserRole userRole;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Board> boards = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
 
     @Builder
@@ -47,5 +47,10 @@ public class User {
         this.name = name;
         this.password = password;
         return this;
+    }
+
+    public void writeBoard(Board board) {
+        this.boards.add(board);
+        board.createdByUser(this);
     }
 }
