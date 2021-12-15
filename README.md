@@ -24,10 +24,10 @@
 | POST   | /boards/{userId}/write     | 유저 게시물 등록         |
 | GET    | /boards                    | 전체 게시물 조회           |
 | GET    | /boards/{boardId}          | 단일 게시물 조회     |
-| GET    | /boards/{category}         | 카테고리별 게시물 조회     |
+| GET    | /boards/category/{category}         | 카테고리별 게시물 조회     |
 | PUT    | /boards/{userId}/{boardId} | 게시물 수정                |
 | DELETE | /boards/{userId}/{boardId} | 게시물 삭제                |
-| GET    | /boards/{userId}           | 유저가 쓴 게시물 전체 조회 |
+| GET    | /boards/user/{userId}           | 유저가 쓴 게시물 전체 조회 |
 
 <br/>
 

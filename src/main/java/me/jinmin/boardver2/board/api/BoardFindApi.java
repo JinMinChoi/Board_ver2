@@ -50,4 +50,14 @@ public class BoardFindApi {
             return ApiResult.failed(e.getMessage());
         }
     }
+
+    @GetMapping("/user/{userId}")
+    public ApiResult<List<Board>> findByUserId(@PathVariable Long userId) {
+        try {
+            return ApiResult.succeed(boardFindService.findByUser(userId));
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return ApiResult.failed(e.getMessage());
+        }
+    }
 }
