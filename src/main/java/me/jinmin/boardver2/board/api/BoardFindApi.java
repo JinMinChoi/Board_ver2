@@ -32,7 +32,7 @@ public class BoardFindApi {
     }
 
     @GetMapping("/{boardId}")
-    public ApiResult<Long> findById(@PathVariable Long boardId) {
+    public ApiResult<Board> findById(@PathVariable Long boardId) {
         try {
             return ApiResult.succeed(boardFindService.findById(boardId));
         } catch (Exception e) {

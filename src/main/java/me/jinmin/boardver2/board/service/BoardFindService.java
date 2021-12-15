@@ -20,10 +20,10 @@ public class BoardFindService {
     private final UserFindService userFindService;
 
     @Transactional(readOnly = true)
-    public Long findById(Long boardId) {
+    public Board findById(Long boardId) {
         Board board = boardRepository.findById(boardId)
                 .orElseThrow(() -> new NotFoundBoardException(String.format("Board is not Found!")));
-        return board.getId();
+        return board;
     }
 
     @Transactional(readOnly = true)
