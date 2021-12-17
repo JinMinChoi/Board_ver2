@@ -1,10 +1,10 @@
 # Board_ver2
 
-# Api
-
 ---
 
-## User
+## Api
+
+### User
 
 | METHOD | URL             | EXPLANATION    |
 | ------ | --------------- | -------------- |
@@ -17,7 +17,7 @@
 
 <br/>
 
-## User - Board
+### User - Board
 
 | METHOD | URL                        | EXPLANATION                |
 | ------ | -------------------------- | -------------------------- |
@@ -31,11 +31,11 @@
 
 <br/>
 
-## User - Comment - Board
+### User - Comment - Board
 
 | METHOD | URL                               | EXPLANATION           |
 | ------ | --------------------------------- | --------------------- |
-| POST   | /comment/{userId}/{boardId}/write | 댓글 작성             |
-| GET    | /comment/{boardId}                | 게시물 전체 댓글 조회 |
-| PUT    | /comment/{userId}/{boardId}       | 댓글 수정             |
-| DELETE | /comment/{userId}/{boardId}/write | 댓글 삭제             |
+| POST   | /comments/write/{userId}/{boardId} | 댓글 작성             |
+| GET    | /comments/{boardId}                | 게시물 전체 댓글 조회 |
+| PUT    | /comments/update/{userId}/{boardId}       | 댓글 수정             |
+| DELETE | /comments/delete/{userId}/{boardId} | 댓글 삭제             |
