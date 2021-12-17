@@ -32,7 +32,7 @@ public class BoardUpdateService {
     }
 
     private void checkBoardLoginUser(User user, Board board) {
-        if (!Objects.equals(board.getUser().getId(), user.getId())) {
+        if (!Objects.equals(board.getUser().getUser_id(), user.getUser_id())) {
             throw new NotHavePermissionBoardException("해당 게시물을 수정할 권한이 없습니다.");
         }
     }

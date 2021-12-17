@@ -1,6 +1,7 @@
 package me.jinmin.boardver2.board.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +21,7 @@ public class Board extends TimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "board_id")
-    private Long id;
+    private Long board_id;
 
     @Column(name = "title")
     private String title;
@@ -31,14 +32,15 @@ public class Board extends TimeEntity {
     @Column(name = "writer")
     private String writer;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @JsonIgnore
     private User user;
 
     @Enumerated(EnumType.STRING)
     private BoardCategory category;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
 
@@ -58,6 +60,6 @@ public class Board extends TimeEntity {
         this.title = title;
         this.content = content;
         this.category = category;
-        return this.getId();
+        return this.getBoard_id();
     }
 }

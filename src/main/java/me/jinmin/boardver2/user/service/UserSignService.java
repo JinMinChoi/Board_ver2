@@ -28,14 +28,14 @@ public class UserSignService {
                 .userRole(UserRole.NORMAL)
                 .build();
         User savedUser = userRepository.save(user);
-        return savedUser.getId();
+        return savedUser.getUser_id();
     }
 
     @Transactional
     public Long logIn(UserLogInRequest userLogInRequest) {
         User user = userFindService.findByEmail(userLogInRequest.getEmail());
         checkMatchedPassword(userLogInRequest.getPassword(), user.getPassword());
-        return user.getId();
+        return user.getUser_id();
     }
 
     private void checkDuplicatedEmail(String email) {

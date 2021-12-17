@@ -19,6 +19,6 @@ public class UserUpdateService {
                 userUpdateRequest.getName(),
                 userUpdateRequest.getPassword()
         );
-        return updatedUser.getId();
+        return updatedUser.getUser_id();
     }
 }

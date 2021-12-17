@@ -27,6 +27,6 @@ public class BoardWriteService {
                 .build();
         Board savedBoard = boardRepository.save(board);
         user.writeBoard(savedBoard);
-        return savedBoard.getId();
+        return savedBoard.getBoard_id();
     }
 }
