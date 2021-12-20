@@ -52,4 +52,9 @@ public class Comment extends TimeEntity {
     public void writtenByUser(User user) {
         this.user = user;
     }
+
+    public Long update(String content) {
+        this.content = content;
+        return this.getComment_id();
+    }
 }
