@@ -38,3 +38,6 @@ out/
 
 ### YAML ###
 *.yml
+
+### PEM ###
+*.pem

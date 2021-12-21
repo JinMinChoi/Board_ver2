@@ -40,7 +40,7 @@ public class UserSignService {
 
     private void checkDuplicatedEmail(String email) {
         if (userRepository.findByEmail(email).isPresent()) {
-            throw new DuplicatedEmailException(String.format("%s is email that already exist.", email));
+            throw new DuplicatedEmailException(String.format("\"%s\" already exist.", email));
         }
     }
 
