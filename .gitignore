@@ -39,5 +39,8 @@ out/
 ### YAML ###
 *.yml
 
-### PEM ###
-*.pem
+### EC2 PEM ###
+src/main/resources/ec2/*
+
+### Firebase ###
+src/main/resources/firebase/*

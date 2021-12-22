@@ -24,8 +24,15 @@ public class User {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "device_token")
+    private String deviceToken;
 
     @Enumerated(value = EnumType.STRING)
     private UserRole userRole;
@@ -60,5 +67,9 @@ public class User {
     public void writeComment(Comment comment) {
         this.comments.add(comment);
         comment.writtenByUser(this);
+    }
+
+    public void modifyDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
     }
 }

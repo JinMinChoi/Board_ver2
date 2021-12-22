@@ -35,6 +35,7 @@ public class UserSignService {
     public Long logIn(UserLogInRequest userLogInRequest) {
         User user = userFindService.findByEmail(userLogInRequest.getEmail());
         checkMatchedPassword(userLogInRequest.getPassword(), user.getPassword());
+        user.modifyDeviceToken(userLogInRequest.getDeviceToken());
         return user.getUser_id();
     }
 

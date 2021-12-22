@@ -27,11 +27,20 @@ dependencies {
     implementation 'io.springfox:springfox-swagger2:2.9.2'
     implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 
+    //database
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java'
 
+    //lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    //firebase sdk
+    implementation 'com.google.firebase:firebase-admin:6.8.1'
+    //okhttp
+    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
+
+    //test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

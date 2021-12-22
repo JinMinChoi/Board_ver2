@@ -8,4 +8,5 @@ import lombok.NoArgsConstructor;
 public class UserLogInRequest {
     private String email;
     private String password;
+    private String deviceToken;
 }
