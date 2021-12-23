@@ -11,8 +11,6 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.IOException;
 import java.util.Arrays;
 
-//1. AccessToken 발급 받기
-
 @Configuration
 public class FirebaseConfig {
 

@@ -49,7 +49,7 @@ public class Comment extends TimeEntity {
         board.getComments().add(this);
     }
 
-    public void writtenByUser(User user) {
+    public void writeUser(User user) {
         this.user = user;
     }
 

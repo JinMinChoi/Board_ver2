@@ -66,7 +66,7 @@ public class User {
 
     public void writeComment(Comment comment) {
         this.comments.add(comment);
-        comment.writtenByUser(this);
+        comment.writeUser(this);
     }
 
     public void modifyDeviceToken(String deviceToken) {
