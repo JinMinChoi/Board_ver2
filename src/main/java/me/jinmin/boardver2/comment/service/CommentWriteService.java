@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 @Slf4j
 @Service
@@ -27,7 +28,7 @@ public class CommentWriteService {
     private final FirebaseCloudMessageService messageService;
 
     @Transactional
-    public Long writeComment(Long userId, Long boardId, CommentWriteRequest commentWriteRequest) throws FirebaseMessagingException, IOException {
+    public Long writeComment(Long userId, Long boardId, CommentWriteRequest commentWriteRequest) throws FirebaseMessagingException, IOException, ExecutionException, InterruptedException {
         Board board = boardFindService.findById(boardId);
         User user = userFindService.findById(userId);
 
@@ -45,7 +46,7 @@ public class CommentWriteService {
         return savedComment.getComment_id();
     }
 
-    private void sendMessageToBoardWriter(String targetToken, String title, String writer, String content) throws FirebaseMessagingException, IOException {
+    private void sendMessageToBoardWriter(String targetToken, String title, String writer, String content) throws FirebaseMessagingException, IOException, ExecutionException, InterruptedException {
         messageService.sendMessageTo(targetToken, title, "[" + writer + "]" + "가 댓글 : <" + content + ">을 작성했습니다.");
     }
 }

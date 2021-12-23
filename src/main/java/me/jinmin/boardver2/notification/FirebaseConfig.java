@@ -1,6 +1,8 @@
 package me.jinmin.boardver2.notification;
 
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.common.util.concurrent.ListeningExecutorService;
+import com.google.common.util.concurrent.MoreExecutors;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import okhttp3.OkHttpClient;
@@ -28,6 +30,12 @@ public class FirebaseConfig {
                 .build();
 
         return FirebaseApp.initializeApp(options);
+    }
+
+    //비동기 통신을 위함
+    @Bean
+    public ListeningExecutorService firebaseAppExecutor() {
+        return MoreExecutors.newDirectExecutorService();
     }
 
     @Bean

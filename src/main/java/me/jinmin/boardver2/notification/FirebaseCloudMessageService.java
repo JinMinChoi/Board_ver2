@@ -3,6 +3,7 @@ package me.jinmin.boardver2.notification;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import com.google.firebase.messaging.Message;
 import com.google.firebase.messaging.Notification;
@@ -13,6 +14,7 @@ import org.apache.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 //3. FCM에 PUSH 알림 요청을 위한 http post request 만들기
 
@@ -31,18 +33,22 @@ public class FirebaseCloudMessageService {
      * `targetToken`에 해당하는 기기로 푸시 알림 전송 요청
      * (targetToken 은 프론트 사이드에서 얻기!)
      */
-    public void sendMessageTo(String targetToken, String title, String body) throws FirebaseMessagingException, IOException {
+    public void sendMessageTo(String targetToken, String title, String body) throws FirebaseMessagingException, IOException, ExecutionException, InterruptedException {
 
         //Request + Respons 사용
-        RequestBody requestBody = getRequestBody(makeFcmMessage(targetToken, title, body));
+        /*RequestBody requestBody = getRequestBody(makeFcmMessage(targetToken, title, body));
         Request request = getRequest(requestBody);
         Response response = getResponse(request);
-        log.info(response.body().string());
+        log.info(response.body().string());*/
 
         //FirebaseMessaging 사용
-        /*Message message = makeMessage(targetToken, title, body);
+        Message message = makeMessage(targetToken, title, body);
         String response = FirebaseMessaging.getInstance().send(message);
-        log.info(response);*/
+        log.info(response);
+
+        //비동기
+        String asyncMessage = FirebaseMessaging.getInstance().sendAsync(message).get();
+
     }
 
     private Response getResponse(Request request) throws IOException {
@@ -71,7 +77,7 @@ public class FirebaseCloudMessageService {
                 .validateOnly(false)
                 .build();
 
-        log.info("message 변환(Object -> String) \n" + objectMapper.writeValueAsString(fcmMessage));
+        //log.info("message 변환(Object -> String) \n" + objectMapper.writeValueAsString(fcmMessage));
         return objectMapper.writeValueAsString(fcmMessage);
     }
 
